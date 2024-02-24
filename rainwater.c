@@ -1,0 +1,45 @@
+#include<stdio.h>
+int rainwatertrap(int block[],int n);
+int max(int s,int p);
+int min(int m,int n);
+main()
+{
+   int n,ans;
+   int block[]={3,1,2,4,1,1,3,1};
+   n=sizeof(block)/sizeof(block[0]);
+   ans= rainwatertrap(block,n);
+   printf("The number of units it can store is %d",ans);
+}
+int rainwatertrap(int block[],int n)
+{
+    int left[n],right[n],ans=0,i;
+    left[0]=block[0];
+    right[n-1]=block[n-1];
+    for(i=1;i<n;++i)
+    {
+        left[i]= max(left[i-1],block[i]);
+    }
+    for(i=n-2;i>0;--i)
+    {
+        right[i]=max(right[i+1],block[i]);
+    }
+    for(i=0;i<n;++i)
+    {
+        ans+= min(left[i],right[i])-block[i];
+    }
+    return(ans);
+}
+int max(int s,int p )
+{
+    if(p>s)
+      return(p);
+    else
+      return(s);
+}
+int min(int m,int n)
+{
+    if(m<n)
+      return(m);
+    else
+      return(n);
+}

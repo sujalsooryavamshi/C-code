@@ -1,0 +1,32 @@
+#include<stdio.h>
+main()
+{
+    char str[50];
+    char *p=str;
+    int char_c=0;
+    int word_c=0;
+    int i;
+    printf("Enter the string\n");
+    gets(str);
+    for(i=0;str[i]!='\0';++i)
+    {
+        if(str[i]==' ')
+           continue;
+        ++char_c;
+    }
+    for(i=0;str[i]!='\0';)
+    {
+        while(str[i]==' ')
+          ++i;
+        if(str[i]!=' ')
+        {
+           ++word_c;
+        while(str[i]!=' '&& str[i]!='\0')
+          ++i;
+        }
+        if(str[i]!='\0')
+          ++i;    
+    }
+    printf("The number of charecter is : %d\n",char_c);
+    printf("The number of words : %d",word_c);
+}

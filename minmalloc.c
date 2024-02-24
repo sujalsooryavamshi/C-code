@@ -1,0 +1,34 @@
+// small and large
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+   int *p,*q,n,i;
+   printf("Enter the number of terms\n");
+   scanf("%d",&n);
+   p=(int *)malloc(sizeof(int)*n);
+   if(p==NULL)
+   {
+     printf("Not info space\n");
+   }
+   else 
+     for(i=0;i<n;++i)
+    {
+        scanf("%d",p+i);
+    }
+    *q=*p;
+    *(q+1)=*p;
+    for(i=0;i<n;++i)
+    {
+        if(*(p+i)<*q)
+          {
+             *q=*(p+i);
+          }
+        if(*(p+i)>*(q+1))
+          {
+            *(q+1)=*(p+i);
+          }
+    }
+    printf(" min %d max %d\n",*q,*(q+1));
+}
+   

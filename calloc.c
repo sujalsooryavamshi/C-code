@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+void read(int *p,int *n);
+void sum(int *p,int n);
+main()
+{
+    int *p,n;
+    printf("Enter the size\n");
+    scanf("%d",&n);
+    p=(int*)calloc(n,sizeof(int));
+    printf("Enter the elements\n");
+    read(p,&n);
+    sum(p,n);
+    free(p);
+}
+void read(int *p,int *n)
+{
+    int i;
+    for(i=0;i<*n;++i)
+      scanf("%d",p+i);  
+}
+void sum(int *p,int n)
+{
+   int sum=0,i;
+   for(i=0;i<n;++i)
+   {
+     sum+=*(p+i);
+   }
+    printf("%d",sum);    
+}

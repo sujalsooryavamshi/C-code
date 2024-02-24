@@ -1,0 +1,33 @@
+//selection sort
+#include<stdio.h>
+void selection(int n,int a[]);
+main()
+{
+    int a[10],i,n;
+    printf("Enter the terms\n");
+    scanf("%d",&n);
+    printf("enter the elements\n");
+    for(i=0;i<n;++i)
+      scanf("%d",&a[i]);
+    selection(n,a);
+}
+void selection(int n,int a[])
+{
+     int i,min,j,temp;
+     for(i=0;i<n-1;++i)
+     {
+        min=i;
+        for(j=i+1;j<n;++j)
+        {
+            if(a[j]<a[min])   
+              min=j;
+        }
+        temp = a[min];
+        a[min] = a[i];
+        a[i] = temp; 
+     }
+   printf("The sorted list is \n");
+   for(i=0;i<n;++i)
+     printf("%d\t",a[i]);
+
+}

@@ -1,0 +1,23 @@
+#include<stdio.h>
+// feet and inch
+struct dist
+{
+   int feet,inch;
+};
+main()
+{
+  int sum1=0,sum2=0;
+   struct dist s1,s2;
+   printf("Enter the feet and inch of first\n");
+   scanf("%d%d",&s1.feet,&s1.inch);
+   printf("Eneter the feet and inch of second\n");
+   scanf("%d%d",&s2.feet,&s2.inch);
+   sum1=s1.feet+s2.feet;
+   sum2=s1.inch+s2.inch;
+   while(sum2>=12)
+   {
+     sum1+=sum2/12;
+     sum2=sum2%12;
+   }
+   printf("The sum is %d_%d",sum1,sum2);
+}
