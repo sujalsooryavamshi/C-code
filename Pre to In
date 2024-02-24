@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+char stack[MAX][MAX];
+int top = -1;
+
+int isspaces(char c);
+int isempty();
+void push(const char symbol[]);
+void pop(char symbol[]);
+void posttoin(const char in[]);
+
+int main() {
+    char in[MAX];
+    printf("Enter the prefix expression:\n");
+    scanf("%s", in);
+    posttoin(in);
+    return 0;
+}
+
+void posttoin(const char in[]) {
+    int l = strlen(in);
+
+    for (int i = l - 1; i >= 0; --i) {
+        char c = in[i];
+
+        if (!isspaces(c)) {
+            if (isalpha(c) || isdigit(c)) {
+                char temp[2];
+                 temp[0] = c;
+                 temp[1]='\0';
+                push(temp);
+            } else {
+                char a[MAX], b[MAX];
+                pop(a);
+                pop(b);
+                char temp[MAX];
+
+                if (c == '+' || c == '-' || c == '*' || c == '/') {
+                    sprintf(temp, "(%s%c%s)", a, c, b);
+                } else if (c == '^') {
+                    sprintf(temp, "%s%c(%s)", a, c, b);
+                }
+
+                push(temp);
+            }
+        }
+    }
+    char result[MAX];
+    pop(result);
+    printf("Infix Expression: %s\n", result);
+}
+
+int isspaces(char c) {
+    return (c == ' ' || c == '\t');
+}
+
+int isempty() {
+    return top == -1;
+}
+
+void push(const char symbol[]) {
+    if (top == MAX - 1) {
+        printf("Stack overflow condition\n");
+    } else {
+        top++;
+        strcpy(stack[top], symbol);
+    }
+}
+
+void pop(char symbol[]) {
+    if (top == -1) {
+        printf("Stack underflow condition\n");
+        exit(1);
+    } else {
+        strcpy(symbol, stack[top]);
+        top--;
+    }
+}
+
