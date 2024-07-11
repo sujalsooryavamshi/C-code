@@ -3,7 +3,7 @@
 #include<math.h>
 main()
 {
-    int a[50],n,i,ans;
+    int a[50],n,i,ans,j;
     printf("enter the number of terms\n");
     scanf("%d",&n);
     printf("elements\n");
