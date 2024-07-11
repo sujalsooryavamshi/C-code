@@ -1,4 +1,6 @@
+
 // Perfect Square Numbers(2,4,9,16....)
+// Perfect Square Numbers (Addede a comment)
 #include<stdio.h>
 #include<math.h>
 main()
